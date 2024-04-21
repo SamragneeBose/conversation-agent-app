@@ -70,7 +70,19 @@ class _ImageSelectState extends State<ImageSelect> {
                     borderRadius: BorderRadius.all(Radius.circular(50)),
                   )
               ),
-              child: Text("Browse Gallery"),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Browse Gallery"),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Icon(
+                    Icons.add_photo_alternate_rounded,
+                    color: Colors.deepPurple[400],
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
@@ -86,7 +98,19 @@ class _ImageSelectState extends State<ImageSelect> {
                     borderRadius: BorderRadius.all(Radius.circular(50)),
                   )
               ),
-              child: Text("Open Camera"),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Open Camera"),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Icon(
+                    Icons.camera_alt_rounded,
+                    color: Colors.deepPurple[400],
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
