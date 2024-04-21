@@ -1,5 +1,9 @@
 import 'package:conversation_agent_app/constants/constants.dart';
+import 'package:conversation_agent_app/providers/response_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Constants/constants.dart';
 
 class DropDownWidget extends StatefulWidget {
   const DropDownWidget({super.key});
@@ -10,19 +14,23 @@ class DropDownWidget extends StatefulWidget {
 
 class _DropDownWidgetState extends State<DropDownWidget> {
 
-  String currentType="Multiple Choice Questions";
+  String? currentType;//="Multiple Choice Questions";
 
   @override
   Widget build(BuildContext context) {
+    final responseProvider=Provider.of<ResponseProvider>(context, listen: false);
+    currentType=responseProvider.getCurrentResponseType();
     return DropdownButton(
       dropdownColor: Colors.deepPurple,
         iconEnabledColor: Colors.grey[100],
-        items: getResponseType,
+        items: responseProvider.getResponseType,
         value: currentType,
         onChanged: (value){
           setState(() {
             currentType=value.toString();
           });
+
+          responseProvider.setCurrentResponseType(value.toString());
         }
     );
   }

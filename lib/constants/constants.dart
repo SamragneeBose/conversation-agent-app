@@ -14,6 +14,8 @@ Arcu dictum varius duis at consectetur. Ac tortor vitae purus faucibus ornare su
 In eu mi bibendum neque egestas congue quisque egestas. Quis commodo odio aenean sed adipiscing. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Amet mauris commodo quis imperdiet massa tincidunt. Dictumst quisque sagittis purus sit amet. Sed odio morbi quis commodo odio aenean sed. Sit amet nisl purus in mollis. Eu scelerisque felis imperdiet proin fermentum leo vel orci porta. Fusce id velit ut tortor. Pretium quam vulputate dignissim suspendisse. Id venenatis a condimentum vitae sapien pellentesque habitant. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. Tristique senectus et netus et malesuada fames. Adipiscing commodo elit at imperdiet. Quam viverra orci sagittis eu volutpat odio. Eleifend mi in nulla posuere sollicitudin aliquam. Volutpat sed cras ornare arcu dui vivamus arcu. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam.
 ''';
 
+String BASE_URL="https://api.openai.com/v1/chat/completions";
+
 final convMsg=[
   {
     "msg": "A",
@@ -37,23 +39,23 @@ List<String> responses=[
   "Multiple Choice Questions",
   "Graduation or Higher",
   "ISC",
-  "CBSE 12"
+  "CBSE 12",
   "ICSE",
   "CBSE 10",
 ];
 
-List<DropdownMenuItem<String>>? get getResponseType{
-  List<DropdownMenuItem<String>>? responseTypes =
-  List<DropdownMenuItem<String>>.generate(
-      responses.length,
-          (index) => DropdownMenuItem(
-            value: responses[index],
-              child: TextWidget(
-                label: responses[index],
-                fontSize: 15,
-                color: Colors.grey[100],
-              ),
-          ),
-  );
-  return responseTypes;
-}
+// List<DropdownMenuItem<String>>? get getResponseType{
+//   List<DropdownMenuItem<String>>? responseTypes =
+//   List<DropdownMenuItem<String>>.generate(
+//       responses.length,
+//           (index) => DropdownMenuItem(
+//             value: responses[index],
+//               child: TextWidget(
+//                 label: responses[index],
+//                 fontSize: 15,
+//                 color: Colors.grey[100],
+//               ),
+//           ),
+//   );
+//   return responseTypes;
+// }
