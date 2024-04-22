@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Constants/constants.dart';
+import '../providers/chat_provider.dart';
 
 class DropDownWidget extends StatefulWidget {
   const DropDownWidget({super.key});
@@ -19,6 +20,8 @@ class _DropDownWidgetState extends State<DropDownWidget> {
   @override
   Widget build(BuildContext context) {
     final responseProvider=Provider.of<ResponseProvider>(context, listen: false);
+    // final chatProvider=Provider.of<ChatProvider>(context, listen: false);
+
     currentType=responseProvider.getCurrentResponseType();
     return DropdownButton(
       dropdownColor: Colors.deepPurple,

@@ -7,6 +7,7 @@ import 'package:conversation_agent_app/widgets/text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -41,17 +42,7 @@ class HomeScreen extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ImageSelect(),
-            Flexible(
-              child: ListView.builder(
-                itemCount: convMsg.length,
-                itemBuilder: (context, index) {
-                  return ConversationWidget(
-                    msg: convMsg[index]["msg"].toString(),
-                    index: int.parse(convMsg[index]["index"].toString()),
-                  );
-              }),
-            ),
-            TextGenerate(),
+            // TextGenerate(),
           ],
         ),
       ),

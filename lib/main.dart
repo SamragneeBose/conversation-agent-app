@@ -1,4 +1,5 @@
 import 'package:conversation_agent_app/homescreen.dart';
+import 'package:conversation_agent_app/providers/chat_provider.dart';
 import 'package:conversation_agent_app/providers/response_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_)=>ResponseProvider(),
+          create: (_) => ResponseProvider(),
+        ),
+        ChangeNotifierProvider(
+            create: (_) => ChatProvider(),
         ),
       ],
       child: MaterialApp(
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomeScreen(),//const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: HomeScreen(), //const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
   }

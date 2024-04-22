@@ -15,6 +15,7 @@ In eu mi bibendum neque egestas congue quisque egestas. Quis commodo odio aenean
 ''';
 
 String BASE_URL="https://api.openai.com/v1/chat/completions";
+String API_KEY="";
 
 final convMsg=[
   {
