@@ -1,5 +1,5 @@
+
 import 'dart:developer';
-import 'dart:js_interop';
 
 import 'package:conversation_agent_app/Constants/constants.dart';
 import 'package:conversation_agent_app/providers/chat_provider.dart';
@@ -7,6 +7,7 @@ import 'package:conversation_agent_app/providers/response_provider.dart';
 import 'package:conversation_agent_app/services/api_services.dart';
 import 'package:conversation_agent_app/widgets/conversation_widget.dart';
 import 'package:conversation_agent_app/widgets/text_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -56,9 +57,10 @@ class _TextGenerateState extends State<TextGenerate> {
     return Column(
       children: [
         Flexible(
+          flex: 2,
           child: ListView.builder(
-              controller: _listScrollController,
-              itemCount: chatProvider.getChatList.length,
+              // controller: _listScrollController,
+              itemCount: convMsg.length, //chatProvider.getChatList.length,
               itemBuilder: (context, index) {
                 return ConversationWidget(
                   msg: //chatProvider.getChatList[index].msg,
@@ -68,15 +70,15 @@ class _TextGenerateState extends State<TextGenerate> {
                 );
               }),
         ),
-        if (_isGenerating) ...[
-          SpinKitThreeBounce(
-            color: Colors.deepPurple,
-            size: 18,
-          ),
-        ],
-        SizedBox(
-          height: 15,
-        ),
+        // if (_isGenerating) ...[
+        //   SpinKitThreeBounce(
+        //     color: Colors.deepPurple,
+        //     size: 18,
+        //   ),
+        // ],
+        // SizedBox(
+        //   height: 15,
+        // ),
         Material(
           color: Colors.deepPurple[50],
           child: Row(

@@ -38,11 +38,40 @@ class HomeScreen extends StatelessWidget {
       //   child: Text("Clear"),
       // ),
       body: SafeArea(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            ImageSelect(),
-            // TextGenerate(),
+            Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageSelect(),
+                TextGenerate(),
+                // TextField(
+                //   // focusNode: focusNode,
+                //   style: TextStyle(
+                //     color: Colors.deepPurple,
+                //   ),
+                //   // controller: textEditingController,
+                //   // onSubmitted: (value) async {
+                //   //   await sendMessageFCT(
+                //   //       chatProvider: chatProvider,
+                //   //       responseProvider: responseProvider);
+                //   // },
+                //   decoration: InputDecoration.collapsed(
+                //       hintText: "Ask Away!",
+                //       hintStyle: TextStyle(
+                //         color: Colors.grey,
+                //       )),
+                // ),
+                // IconButton(
+                //     onPressed: () {
+                //       },
+                //     icon: Icon(
+                //       Icons.send_rounded,
+                //       color: Colors.deepPurple,
+                //     ))
+
+              ],
+            ),
           ],
         ),
       ),

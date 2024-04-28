@@ -1,3 +1,6 @@
+import 'package:conversation_agent_app/Constants/constants.dart';
+import 'package:conversation_agent_app/services/api_services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -13,6 +16,8 @@ class ImageSelect extends StatefulWidget {
 class _ImageSelectState extends State<ImageSelect> {
 
   File? _selectedImage;
+  String? extractedInfo;
+  bool extracting=false;
 
 
   Future _pickImageFromGallery() async {
@@ -24,6 +29,7 @@ class _ImageSelectState extends State<ImageSelect> {
     imagePath = await _cropImage(imageFile: imagePath);
     setState(() {
       _selectedImage = imagePath;
+      // extractInfo(); //TODO API Call
     });
   }
 
@@ -36,6 +42,8 @@ class _ImageSelectState extends State<ImageSelect> {
     imagePath = await _cropImage(imageFile: imagePath);
     setState(() {
       _selectedImage = imagePath;
+      // if(_selectedImage!=null)
+      // extractInfo(); //TODO API Call
     });
   }
 
@@ -45,6 +53,26 @@ class _ImageSelectState extends State<ImageSelect> {
 
     if (croppedImage == null) return null;
     return File(croppedImage.path);
+  }
+
+  extractInfo() async {
+    setState(() {
+      extracting = true;
+    });
+
+    try {
+      extractedInfo =
+      await ApiService.sendImage(image: _selectedImage!);
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(error.toString()),
+        backgroundColor: Colors.red,
+      ));
+    } finally {
+      setState(() {
+        extracting = false;
+      });
+    }
   }
 
   @override
@@ -118,6 +146,8 @@ class _ImageSelectState extends State<ImageSelect> {
             child: _selectedImage != null ? Image.file(_selectedImage!) : Text(
                 "Pick Image"),
           ),
+            // extractedInfo==null? SizedBox() : SizedBox(child: Text(extractedInfo!),), //TODO API Call
+            Text(generatedText),
         ],
       ),
     );
