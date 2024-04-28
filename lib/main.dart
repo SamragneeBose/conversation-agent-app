@@ -1,6 +1,7 @@
 import 'package:conversation_agent_app/homescreen.dart';
 import 'package:conversation_agent_app/providers/chat_provider.dart';
 import 'package:conversation_agent_app/providers/response_provider.dart';
+import 'package:conversation_agent_app/providers/text_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
             create: (_) => ChatProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TextProvider(),
         ),
       ],
       child: MaterialApp(

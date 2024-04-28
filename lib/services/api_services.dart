@@ -77,7 +77,7 @@ class ApiService {
           "messages": [
             {
               "role": "system",
-              "content": "Maintain strict accuracy.",
+              "content": "Accurately extract the text. If required, any additional information should be kept brief",
             },
             {
               "role": "user",

@@ -1,9 +1,11 @@
 
 import 'dart:developer';
+import 'dart:html';
 
 import 'package:conversation_agent_app/Constants/constants.dart';
 import 'package:conversation_agent_app/providers/chat_provider.dart';
 import 'package:conversation_agent_app/providers/response_provider.dart';
+import 'package:conversation_agent_app/providers/text_provider.dart';
 import 'package:conversation_agent_app/services/api_services.dart';
 import 'package:conversation_agent_app/widgets/conversation_widget.dart';
 import 'package:conversation_agent_app/widgets/text_widget.dart';
@@ -68,6 +70,7 @@ class _TextGenerateState extends State<TextGenerate> {
     // TODO: implement initState
     _listScrollController = ScrollController();
     textEditingController = TextEditingController();
+    // textEditingController.text="Hello";
     focusNode = FocusNode();
 
     super.initState();
@@ -94,18 +97,26 @@ class _TextGenerateState extends State<TextGenerate> {
 
   Future<void> sendMessageFCT(
       {required ResponseProvider responseProvider,
-        required ChatProvider chatProvider}) async {
+        required ChatProvider chatProvider,
+        required TextProvider textProvider}) async {
 
     if(_isGenerating) {
       return;
     }
 
-    if(textEditingController.text.isEmpty) {
+    if(textEditingController.text.isEmpty && textProvider.getExtractedText().isEmpty) {
       return;
     }
 
     try {
-      String msg=textEditingController.text;
+      String msg="";
+
+      if(textProvider.getExtractedText().isNotEmpty)
+        msg+=textProvider.getExtractedText();
+
+      if(textEditingController.text.isNotEmpty)
+        msg+=" "+textEditingController.text;
+
       setState(() {
         _isGenerating = true;
         // chatList.add(ChatResponse(msg: textEditingController.text));
@@ -144,6 +155,7 @@ class _TextGenerateState extends State<TextGenerate> {
   Widget build(BuildContext context) {
     final responseProvider = Provider.of<ResponseProvider>(context);
     final chatProvider = Provider.of<ChatProvider>(context);
+    final textProvider = Provider.of<TextProvider>(context);
 
     var screenSize = MediaQuery.of(context).size;
 
@@ -187,7 +199,9 @@ class _TextGenerateState extends State<TextGenerate> {
                     onSubmitted: (value) async {
                       await sendMessageFCT(
                           chatProvider: chatProvider,
-                          responseProvider: responseProvider);
+                          responseProvider: responseProvider,
+                        textProvider: textProvider,
+                      );
                     },
                     decoration: InputDecoration.collapsed(
                         hintText: "Ask Away!",
@@ -200,7 +214,9 @@ class _TextGenerateState extends State<TextGenerate> {
                     onPressed: () async {
                       await sendMessageFCT(
                           chatProvider: chatProvider,
-                          responseProvider: responseProvider);
+                          responseProvider: responseProvider,
+                        textProvider: textProvider,
+                      );
                     },
                     icon: Icon(
                       Icons.send_rounded,
