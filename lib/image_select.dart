@@ -146,8 +146,8 @@ class _ImageSelectState extends State<ImageSelect> {
             child: _selectedImage != null ? Image.file(_selectedImage!) : Text(
                 "Pick Image"),
           ),
-            // extractedInfo==null? SizedBox() : SizedBox(child: Text(extractedInfo!),), //TODO API Call
-            Text(generatedText),
+            extractedInfo==null? SizedBox() : SizedBox(child: Text(extractedInfo!),), //TODO API Call
+            // Text(generatedText),
         ],
       ),
     );
