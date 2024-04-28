@@ -13,6 +13,12 @@ class TextProvider with ChangeNotifier{
     return text;
   }
 
+  void clearExtractedText () {
+    text="";
+
+    notifyListeners();
+  }
+
   // late TextEditingController textEditingController;
   //
   // TextEditingController getTextEditingController() {

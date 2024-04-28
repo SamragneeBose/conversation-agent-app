@@ -24,4 +24,10 @@ class ChatProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  void clearChatLog () {
+    chatList.clear();
+
+    notifyListeners();
+  }
+
 }

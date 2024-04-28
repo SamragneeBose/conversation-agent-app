@@ -149,18 +149,19 @@ class _ImageSelectState extends State<ImageSelect> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _selectedImage != null ? Image.file(_selectedImage!) : Text(
-                "Pick Image"),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: _selectedImage != null ? Image.file(_selectedImage!) : Text(
+          //       "Pick Image"),
+          // ),
             extractedInfo==null?
             SizedBox()
                 : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                       child: Text(
-                          extractedInfo!
+                        textProvider.getExtractedText()
+                          // extractedInfo!
                       ),
                   ),
                 ), //TODO API Call
